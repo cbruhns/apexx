@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <style media="screen">
+      *{box-sizing:border-box;}
+      html,body{margin: 0;padding: 40px 0 0 0;}
+      ul{
+        float:left;
+        display:block;
+        width:80%;
+        padding: 0;
+        margin: 0 10%;
+        height:auto;
+        position:relative;
+        z-index:500;
+      }
+      li{
+        list-style:none;
+        font-family:'Open Sans', sans-serif;
+        font-weight:400;
+        color:#777777;
+        float:left;
+        display:none;
+        position:absolute;
+        -webkit-transition: all 300ms ease-in-out;
+        -moz-transition: all 300ms ease-in-out;
+        -ms-transition: all 300ms ease-in-out;
+        -o-transition: all 300ms ease-in-out;
+        transition: all 300ms ease-in-out;
+      }
+      .block p i,.block p em{font-size:12px;}
+
+      li.active{display:block;}
+      .block{
+        width:100%;
+        float:left;
+        -webkit-box-shadow:0 5px 9px #d2d2d2;
+        -moz-box-shadow:0 5px 9px #d2d2d2;
+        box-shadow:0 5px 9px #d2d2d2;
+        padding: 20px 15px;
+        display:block;
+        text-align: center;
+        background:#ffffff;
+        z-index:500;
+        -webkit-animation-name: slideUp; animation-name: slideUp;
+        -webkit-animation-duration: .3s; animation-duration: .3s;
+        -webkit-animation-fill-mode: both; animation-fill-mode: both;
+        -webkit-animation-delay: .3s; animation-delay: .3s;
+      }
+      .block i, .block em{
+        font-size:39px;
+        color:#d91a05;
+      }
+      h2{
+        color:#d91a05;
+        font-size:18px;
+      }
+      p{
+        font-size:16px;
+      }
+      p a{
+        color:#d91a05;
+        text-decoration:none;
+      }
+      p a:hover{cursor:pointer;}
+      .wrapper{
+        max-width:1200px;
+        position:relative;
+        margin: 40px auto;
+        -webkit-transition: all 300ms ease-in-out;
+        -moz-transition: all 300ms ease-in-out;
+        -ms-transition: all 300ms ease-in-out;
+        -o-transition: all 300ms ease-in-out;
+        transition: all 300ms ease-in-out;
+      }
+      .clearfix{clear:both;}
+      .controls{
+        z-index:90;
+        width:100%;
+        display:block;
+        top:0;
+        right:0;
+        height:100%;
+        position:absolute;
+      }
+      .next, .prev{
+        z-index:150;
+        width:6%;
+        display:block;
+        top:0;
+        right:2%;
+        height:100%;
+        position:absolute;
+      }
+      .prev{right:initial;left:2%;}
+      .next:hover, .prev:hover{
+        cursor:pointer;
+      }
+      .top, .bottom{
+        width:100%;
+        height:50%;
+        top:0;
+        left:0;
+        position:absolute;
+      }
+      .bottom{top:50%;}
+
+      .next span, .prev span{
+        width:1px;
+        height:90%;
+        position:absolute;
+        display:block;
+        background: #d2d2d2;
+        transform-origin: bottom;
+        -webkit-transition: all 300ms ease-in-out;
+        -moz-transition: all 300ms ease-in-out;
+        -ms-transition: all 300ms ease-in-out;
+        -o-transition: all 300ms ease-in-out;
+        transition: all 300ms ease-in-out;
+      }
+
+      .next .top span{
+        bottom:0px;
+        right:0;
+        -webkit-transform: rotate(-20deg);
+        -moz-transform: rotate(-20deg);
+        -ms-transform: rotate(-20deg);
+        -o-transform: rotate(-20deg);
+        transform: rotate(-20deg);
+        -webkit-transform-origin: bottom;
+      }
+      .next .bottom span{
+        top:0px;
+        right:0;
+        -webkit-transform: rotate(20deg);
+        -moz-transform: rotate(20deg);
+        -ms-transform: rotate(20deg);
+        -o-transform: rotate(20deg);
+        transform: rotate(20deg);
+        -webkit-transform-origin: top;
+      }
+      .prev .top span{
+        bottom:0px;
+        left:0;
+        -webkit-transform: rotate(20deg);
+        -moz-transform: rotate(20deg);
+        -ms-transform: rotate(20deg);
+        -o-transform: rotate(20deg);
+        transform: rotate(20deg);
+        -webkit-transform-origin: bottom;
+      }
+      .prev .bottom span{
+        top:0px;
+        left:0;
+        -webkit-transform: rotate(-20deg);
+        -moz-transform: rotate(-20deg);
+        -ms-transform: rotate(-20deg);
+        -o-transform: rotate(-20deg);
+        transform: rotate(-20deg);
+        -webkit-transform-origin: top;
+      }
+
+      .prev:hover .bottom span,
+      .next:hover .top span,
+      .next:hover .bottom span,
+      .prev:hover .top span{
+        background: #d91a05;
+      }
+
+      .pager{
+        left:0;
+        width:100%;
+        position:absolute;
+        top: 100%;
+        margin: 10px 0 0 0;
+        height:auto;
+        display:block;
+        text-align:center;
+        z-index: 300;
+      }
+      .pagerdot{
+        width:8px;
+        height:8px;
+        -webkit-border-radius:50%;
+        -moz-border-radius:50%;
+        -ms-border-radius:50%;
+        -o-border-radius:50%;
+        border-radius:50%;
+        display:inline-block;
+        *zoom:1;
+        *display:inline;
+        background:#ffffff;
+        border:1px solid #d91a05;
+        margin: 0 4px;
+
+      }
+      .pagerdot.active{background:#d91a05;}
+      /*
+      .pagerdot.active.upnext{background:#666666;border:1px solid #666666;}
+      .pagerdot.active.ondeck{background:#888888;border:1px solid #888888;}
+*/
+      @-webkit-keyframes slideUp {
+          0% { opacity: 0; -webkit-transform: translateY(30px); }
+          100% { opacity: 1; -webkit-transform: translateY(0); }
+      }
+      @keyframes slideUp {
+          0% { opacity: 0; transform: translateY(30px); }
+          100% { opacity: 1; transform: translateY(0); }
+      }
+      .slideUp {
+          -webkit-animation-name: slideUp; animation-name: slideUp;
+          -webkit-animation-duration: .3s; animation-duration: .3s;
+          -webkit-animation-fill-mode: both; animation-fill-mode: both;
+      }
+      @media screen and (max-width: 900px){
+        .next, .prev{
+          width:8%;
+          right:2%;
+        }
+        .prev{right:initial;left:2%;}
+        .next span, .prev span{height: 50%;}
+        .prev:focus .bottom span,
+        .next:focus .top span,
+        .next:focus .bottom span,
+        .prev:focus .top span{
+          background: #d91a05;
+        }
+        .prev:hover .bottom span,
+        .next:hover .top span,
+        .next:hover .bottom span,
+        .prev:hover .top span{
+          background: #d2d2d2;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+      // Pre Wrap
+      $('.cycle').wrap("<div class='wrapper'></div>");
+      $('.wrapper').append("<div class='clearfix'></div>");
+      $('.wrapper').append("<div class='controls'></div>");
+      $('.controls').append("<div class='next'></div><div class='prev'></div><div class='pager'></div>");
+      $('.next, .prev').append("<div class='top'><span></span></div><div class='bottom'><span></span></div>");
+
+      // Initial Setup Of Items
+      var currentIndex = 0,
+      number = 3,
+      items = $('.cycle li'),
+      itemAmt = items.length;
+
+      items.each(function(){
+        var indexVar = ( $(this).index() );
+        $(".pager").append('<span class="pagerdot" data-index="' + indexVar + '"></span>');
+        $('.pagerdot[data-index="0"]').addClass("active");
+      });
+
+      // PAGER
+/*
+      $('.pagerdot').click(function() {
+        var dataIndex = parseInt($(this).attr('data-index'));
+        if( currentIndex !== dataIndex ){
+          clearInterval(autoSlide);
+          currentIndex = dataIndex;
+          cycleItems();
+        }
+      })
+*/
+
+      // Window Resize
+      $(window).resize(function(){
+        var currentHeight = 0;
+        $('.cycle li').each(function() {
+          currentHeight = currentHeight > $(this).height() ? currentHeight : $(this).height();
+        });
+        $(".wrapper").css("height",currentHeight);
+        $(".cycle").css("height",currentHeight);
+      });
+
+
+      // media query event handler
+      if (matchMedia) {
+        var mq = window.matchMedia("(min-width: 900px)");
+        mq.addListener(WidthChange);
+        WidthChange(mq);
+      }
+
+      // media query change
+      function WidthChange(mq) {
+        if (mq.matches) {
+          // window width is at least 900px
+
+          // Set Widths
+          var percentWidth = (94 / number).toFixed(2);
+          var percentMargin = ((6 / number) / 2).toFixed(0);
+          var marginString = "0" + percentMargin + "%";
+          items.width(percentWidth + "%").css({
+            "margin-left" : marginString,
+            "margin-right" : marginString
+          });
+
+          // CORE FUNCTION
+          function cycleItems() {
+            items.removeClass("active first second third");
+            if ( (currentIndex + 1) - itemAmt === -1 ) {
+              var item1 = $('.cycle li').eq(currentIndex);
+              var item2 = $('.cycle li').eq(currentIndex + 1);
+              var item3 = $('.cycle li').eq(0);
+              $('.pagerdot[data-index="' + currentIndex + '"]').addClass("active").siblings().removeClass("active upnext ondeck");
+              $('.pagerdot[data-index="' + currentIndex + '"]').removeClass("upnext ondeck").addClass("active");
+              $('.pagerdot[data-index="' + (currentIndex + 1) + '"]').addClass("active upnext");
+              $('.pagerdot[data-index="' + 0 + '"]').addClass("active ondeck");
+            } else if ( (currentIndex + 1) - itemAmt === 0 ){
+              var item1 = $('.cycle li').eq(currentIndex);
+              var item2 = $('.cycle li').eq(0);
+              var item3 = $('.cycle li').eq(1);
+              $('.pagerdot[data-index="' + currentIndex + '"]').addClass("active").siblings().removeClass("active upnext ondeck");
+              $('.pagerdot[data-index="' + currentIndex + '"]').removeClass("upnext ondeck").addClass("active");
+              $('.pagerdot[data-index="' + 0 + '"]').addClass("active upnext");
+              $('.pagerdot[data-index="' + 1 + '"]').addClass("active ondeck");
+            } else {
+              var item1 = $('.cycle li').eq(currentIndex);
+              var item2 = $('.cycle li').eq(currentIndex + 1);
+              var item3 = $('.cycle li').eq(currentIndex + 2);
+              $('.pagerdot[data-index="' + currentIndex + '"]').addClass("active").siblings().removeClass("active upnext ondeck");
+              $('.pagerdot[data-index="' + currentIndex + '"]').removeClass("upnext ondeck").addClass("active");
+              $('.pagerdot[data-index="' + (currentIndex + 1) + '"]').addClass("active upnext");
+              $('.pagerdot[data-index="' + (currentIndex + 2) + '"]').addClass("active ondeck");
+            }
+            item1.addClass("first active").css("left","0");
+            item2.addClass("second active").css("left","33.33333%");
+            item3.addClass("third active").css("left","66.66666%");
+
+            // Wrapper Height
+            var currentHeight = 0;
+            $('.cycle li.active').each(function() {
+              currentHeight = currentHeight > $(this).height() ? currentHeight : $(this).height();
+            });
+            $(".wrapper").css("height",currentHeight);
+            $(".cycle").css("height",currentHeight);
+          }
+
+          $('.next').unbind('click').click(function() {
+            currentIndex += 1;
+            if (currentIndex > itemAmt - 1) {
+              currentIndex = 0;
+            }
+            cycleItems();
+          });
+
+          $('.prev').unbind('click').click(function() {
+            currentIndex -= 1;
+            if (currentIndex < 0) {
+              currentIndex = itemAmt - 1;
+            }
+            cycleItems();
+          });
+          cycleItems();
+
+        } else {
+          // window width is less than 900px
+
+          // Set Widths
+          var percentWidth = (90).toFixed(2);
+          var percentMargin = (10 / 2).toFixed(0);
+          var marginString = "0" + percentMargin + "%";
+          items.width(percentWidth + "%").css({
+            "margin-left" : marginString,
+            "margin-right" : marginString
+          });
+
+          // CORE FUNCTION
+          function cycleItemsResponsive() {
+            items.removeClass("active first second third");
+
+              var item1 = $('.cycle li').eq(currentIndex);
+              $('.pagerdot[data-index="' + currentIndex + '"]').addClass("active").siblings().removeClass("active upnext ondeck");
+
+            item1.addClass("first active").css("left","0");
+
+            // Wrapper Height
+            var currentHeight = 0;
+            $('.cycle li.active').each(function() {
+              currentHeight = currentHeight > $(this).height() ? currentHeight : $(this).height();
+            });
+
+            $(".wrapper").css("height",currentHeight);
+            $(".cycle").css("height",currentHeight);
+          }
+
+
+
+          $('.next').unbind('click').click(function() {
+            currentIndex += 1;
+            if (currentIndex > itemAmt - 1) {
+              currentIndex = 0;
+            }
+            cycleItemsResponsive();
+          });
+
+          $('.prev').unbind('click').click(function() {
+            currentIndex -= 1;
+            if (currentIndex < 0) {
+              currentIndex = itemAmt - 1;
+            }
+            cycleItemsResponsive();
+          });
+
+          cycleItemsResponsive();
+        }
+
+      }
+    });
+    </script>
+    <ul class="cycle">
+      <li>
+        <div class="block slideUp">
+          <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+          <h2>Reddit</h2>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+          <p><a href="#">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></p>
+        </div>
+      </li>
+      <li>
+        <div class="block">
+          <i class="fa fa-twitter" aria-hidden="true"></i>
+          <h2>Twitter</h2>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+          <p><a href="#">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></p>
+        </div>
+      </li>
+      <li>
+        <div class="block">
+          <i class="fa fa-instagram" aria-hidden="true"></i>
+          <h2>Instagram</h2>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+          <p><a href="#">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></p>
+        </div>
+      </li>
+      <li>
+        <div class="block">
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+          <h2>Facebook</h2>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+          <p><a href="#">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></p>
+        </div>
+      </li>
+      <li>
+        <div class="block">
+          <i class="fa fa-pinterest" aria-hidden="true"></i>
+          <h2>Pinterest</h2>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+          <p><a href="#">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></p>
+        </div>
+      </li>
+      <li>
+        <div class="block">
+          <i class="fa fa-github" aria-hidden="true"></i>
+          <h2>GitHub</h2>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+          <p><a href="#">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></p>
+        </div>
+      </li>
+      <li>
+        <div class="block">
+          <i class="fa fa-vine" aria-hidden="true"></i>
+          <h2>Vine</h2>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+          <p><a href="#">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></p>
+        </div>
+      </li>
+      <li>
+        <div class="block">
+          <i class="fa fa-tumblr" aria-hidden="true"></i>
+          <h2>Tumblr</h2>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+          <p><a href="#">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></p>
+        </div>
+      </li>
+    </ul>
+  </body>
+</html>
