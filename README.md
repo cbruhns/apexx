@@ -4,7 +4,7 @@
 <ul>
   <li>Responsive</li>
   <li>Powered by jQuery</li>
-  <li>Accepts HTML contents</li>
+  <li>Accepts HTML contents</li> 
   <li>Lightweight</li>
 </ul>
 <h2>Version History</h2>
