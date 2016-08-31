@@ -21,9 +21,9 @@
 <h1>Options</h1>
 <ul>
 <li>
-    <p><b>numberOfSlides</b> | Default: 3<br /> Number of Visible Items at full width.</p>
+    <p><b>numberOfSlides</b> | Default: 3<br /> Number of visible items at full width.</p>
   </li>
   <li>
-    <p><b>themeColor</b> | Default: '#d91a05'<br />Default Colo of pager dots and next/previous arrows.</p>
+    <p><b>themeColor</b> | Default: '#d91a05'<br />Default color of pager dots and next/previous arrows.</p>
   </li>
 </ul>
