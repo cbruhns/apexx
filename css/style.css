@@ -1,3 +1,5 @@
+/* BY: cbruhns || v0.2.1 - 8/31/16 */
+
 *{box-sizing:border-box;}
 html,body{margin: 0;padding: 40px 0 0 0;}
 ul{
@@ -124,6 +126,9 @@ p a:hover{cursor:pointer;}
   -o-transform: rotate(-20deg);
   transform: rotate(-20deg);
   -webkit-transform-origin: bottom;
+  -webkit-transform-origin: bottom;
+  -ms-transform-origin: bottom;
+  transform-origin: bottom;
 }
 .next .bottom span{
   top:0px;
@@ -134,6 +139,8 @@ p a:hover{cursor:pointer;}
   -o-transform: rotate(20deg);
   transform: rotate(20deg);
   -webkit-transform-origin: top;
+  -ms-transform-origin: top;
+  transform-origin: top;
 }
 .prev .top span{
   bottom:0px;
@@ -144,6 +151,8 @@ p a:hover{cursor:pointer;}
   -o-transform: rotate(20deg);
   transform: rotate(20deg);
   -webkit-transform-origin: bottom;
+  -ms-transform-origin: bottom;
+  transform-origin: bottom;
 }
 .prev .bottom span{
   top:0px;
@@ -154,6 +163,8 @@ p a:hover{cursor:pointer;}
   -o-transform: rotate(-20deg);
   transform: rotate(-20deg);
   -webkit-transform-origin: top;
+  -ms-transform-origin: top;
+  transform-origin: top;
 }
 
 .prev:hover .bottom span,
