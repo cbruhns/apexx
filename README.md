@@ -51,10 +51,16 @@ $(document).ready(function(){
 <br>
 <h1>Options</h1>
 
-**numberOfSlides**
+**maxSlides**
 Number of visible items at full width
 ```
 default: 3
+options: integer
+```
+**minSlides**
+Number of visible items at mobile width
+```
+default: 1
 options: integer
 ```
 **themeColor**
