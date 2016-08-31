@@ -158,24 +158,10 @@ p a:hover{cursor:pointer;}
 
 .prev:hover .bottom span,
 .next:hover .top span{
-  /*
-  -webkit-transform: rotate(-15deg);
-  -moz-transform: rotate(-15deg);
-  -ms-transform: rotate(-15deg);
-  -o-transform: rotate(-15deg);
-  transform: rotate(-15deg);
-  */
   background: #d91a05;
 }
 .next:hover .bottom span,
 .prev:hover .top span{
-  /*
-  -webkit-transform: rotate(15deg);
-  -moz-transform: rotate(15deg);
-  -ms-transform: rotate(15deg);
-  -o-transform: rotate(15deg);
-  transform: rotate(15deg);
-  */
   background: #d91a05;
 }
 
@@ -221,6 +207,20 @@ p a:hover{cursor:pointer;}
   -webkit-animation-duration: .3s; animation-duration: .3s;
   -webkit-animation-fill-mode: both; animation-fill-mode: both;
 }
+
+@-webkit-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1;  }
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1;}
+}
+.fadeIn {
+  -webkit-animation-name: fadeIn; animation-name: fadeIn;
+  -webkit-animation-duration: .3s; animation-duration: .3s;
+  -webkit-animation-fill-mode: both; animation-fill-mode: both;
+}
 @media screen and (max-width: 900px){
   .next, .prev{
     width:8%;
@@ -239,5 +239,11 @@ p a:hover{cursor:pointer;}
   .next:hover .bottom span,
   .prev:hover .top span{
     background: #d2d2d2;
+  }
+  .block{
+    -webkit-animation-name: fadeIn; animation-name: fadeIn;
+    -webkit-animation-duration: 1.5s; animation-duration: 1.5s;
+    -webkit-animation-fill-mode: both; animation-fill-mode: both;
+    -webkit-animation-delay: 0s; animation-delay: 0s;
   }
 }
