@@ -36,11 +36,10 @@
           var currentHeight = 0;
           items.each(function() {
             currentHeight = currentHeight > $(this).height() ? currentHeight : $(this).height();
+            obj.parents(".wrapper").css("height",currentHeight);
+            obj.css("height",currentHeight);
           });
-          obj.parents(".wrapper").css("height",currentHeight);
-          obj.css("height",currentHeight);
         });
-        
         // media query event handler 
         if (matchMedia) {
           var mq = window.matchMedia("(min-width: 900px)");
@@ -92,9 +91,9 @@
               var currentHeight = 0;
               items.each(function() {
                 currentHeight = currentHeight > $(this).height() ? currentHeight : $(this).height();
+                obj.parents(".wrapper").css("height",currentHeight);
+                obj.css("height",currentHeight);
               });
-              obj.parents(".wrapper").css("height",currentHeight);
-              obj.css("height",currentHeight);
             }
             // Next & Previous Clicks
             obj.siblings('.controls').children('.next').unbind('click').click(function() {
