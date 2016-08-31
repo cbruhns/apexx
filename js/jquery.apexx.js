@@ -4,7 +4,6 @@
       //Settings list and the default values
       var defaults = {
         numberOfSlides: 3,
-				maxWidth: '900px',
 				themeColor: '#d91a05'
       };
       var options = $.extend(defaults, options);
@@ -12,6 +11,7 @@
       return this.each(function() {
         var o = options;
 				var obj = $(this);
+
         // Pre-Wrap
         $(this).wrap("<div class='wrapper'></div>");
         $(this).parents(".wrapper").append("<div class='clearfix'></div>");
@@ -37,7 +37,7 @@
             currentHeight = currentHeight > $(this).height() ? currentHeight : $(this).height();
           });
 					obj.parents(".wrapper").css("height",currentHeight);
-					$(this).css("height",currentHeight);
+					obj.css("height",currentHeight);
 
         });
 
@@ -56,6 +56,8 @@
 
             // CORE FUNCTION
             function cycleItems() {
+							var controls = obj.siblings(".controls");
+							var pager = obj.siblings(".controls").children('.pager');
               items.removeClass("active first second third");
               if ( (currentIndex + 1) - itemAmt === -1 ) {
 
@@ -64,11 +66,10 @@
                 var item1 = items.eq(currentIndex);
                 var item2 = items.eq(currentIndex + 1);
                 var item3 = items.eq(0);
-                obj.siblings('.controls').children('.pager').children('.pagerdot[data-index="' + currentIndex + '"]').addClass("active").siblings().removeClass("active");
-
-                obj.siblings('.controls').children('.pager').children('.pagerdot[data-index="' + currentIndex + '"]').addClass("active");
-                obj.siblings('.controls').children('.pager').children('.pagerdot[data-index="' + (currentIndex + 1) + '"]').addClass("active");
-                obj.siblings('.controls').children('.pager').children('.pagerdot[data-index="' + 0 + '"]').addClass("active ondeck");
+                pager.children('.pagerdot[data-index="' + currentIndex + '"]').addClass("active").siblings().removeClass("active");
+                pager.children('.pagerdot[data-index="' + currentIndex + '"]').addClass("active");
+                pager.children('.pagerdot[data-index="' + (currentIndex + 1) + '"]').addClass("active");
+                pager.children('.pagerdot[data-index="' + 0 + '"]').addClass("active ondeck");
 
 
               } else if ( (currentIndex + 1) - itemAmt === 0 ){
@@ -77,10 +78,10 @@
                 var item1 = items.eq(currentIndex);
                 var item2 = items.eq(0);
                 var item3 = items.eq(1);
-                obj.siblings('.controls').children('.pager').children('.pagerdot[data-index="' + currentIndex + '"]').addClass("active").siblings().removeClass("active");
-                obj.siblings('.controls').children('.pager').children('.pagerdot[data-index="' + currentIndex + '"]').addClass("active");
-                obj.siblings('.controls').children('.pager').children('.pagerdot[data-index="' + 0 + '"]').addClass("active");
-                obj.siblings('.controls').children('.pager').children('.pagerdot[data-index="' + 1 + '"]').addClass("active");
+                pager.children('.pagerdot[data-index="' + currentIndex + '"]').addClass("active").siblings().removeClass("active");
+                pager.children('.pagerdot[data-index="' + currentIndex + '"]').addClass("active");
+                pager.children('.pagerdot[data-index="' + 0 + '"]').addClass("active");
+                pager.children('.pagerdot[data-index="' + 1 + '"]').addClass("active");
 
 
               } else {
@@ -89,10 +90,10 @@
                 var item1 = items.eq(currentIndex);
                 var item2 = items.eq(currentIndex + 1);
                 var item3 = items.eq(currentIndex + 2);
-                obj.siblings('.controls').children('.pager').children('.pagerdot[data-index="' + currentIndex + '"]').addClass("active").siblings().removeClass("active");
-                obj.siblings('.controls').children('.pager').children('.pagerdot[data-index="' + currentIndex + '"]').addClass("active");
-                obj.siblings('.controls').children('.pager').children('.pagerdot[data-index="' + (currentIndex + 1) + '"]').addClass("active");
-                obj.siblings('.controls').children('.pager').children('.pagerdot[data-index="' + (currentIndex + 2) + '"]').addClass("active");
+                pager.children('.pagerdot[data-index="' + currentIndex + '"]').addClass("active").siblings().removeClass("active");
+                pager.children('.pagerdot[data-index="' + currentIndex + '"]').addClass("active");
+                pager.children('.pagerdot[data-index="' + (currentIndex + 1) + '"]').addClass("active");
+                pager.children('.pagerdot[data-index="' + (currentIndex + 2) + '"]').addClass("active");
 
 
               }
