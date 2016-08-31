@@ -17,3 +17,13 @@
     <p><b>Version 0.1.2</b><br />Inital repo and folder structure established, along with README and initial content.</p>
   </li>
 </ul>
+<br>
+<h1>Options</h1>
+<ul>
+<li>
+    <p><b>numberOfSlides</b> | Default: 3<br /> Number of Visible Items at full width.</p>
+  </li>
+  <li>
+    <p><b>themeColor</b> | Default: '#d91a05'<br />Default Colo of pager dots and next/previous arrows.</p>
+  </li>
+</ul>
