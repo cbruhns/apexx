@@ -38,7 +38,6 @@
           });
 					obj.parents(".wrapper").css("height",currentHeight);
 					obj.css("height",currentHeight);
-
         });
 
         // media query event handler
