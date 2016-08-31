@@ -40,7 +40,7 @@
 					obj.css("height",currentHeight);
         });
 
-        // media query event handler
+        // media query event handler 
         if (matchMedia) {
           var mq = window.matchMedia("(min-width: 900px)");
           mq.addListener(WidthChange);
