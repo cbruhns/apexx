@@ -136,7 +136,6 @@
                   e++
                 }
               }
-
               // Pager
               pager.children('.pagerdot').each(function(){
                 var thisIndex = $(this).attr('data-index');
@@ -145,7 +144,6 @@
                   $(this).addClass('active');
                 }
               });
-
               // Set Position
               for (var i=0;i<currentItems.length;i++) {
                 var v = (( 100 / o.minSlides) * i).toFixed(2);
