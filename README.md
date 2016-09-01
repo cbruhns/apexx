@@ -2,14 +2,17 @@
 <p>An easy-to-install jQuery powered responsive carousel plugin.</p>
 <h2>Features</h2>
 <ul>
-  <li>Responsive</li>
+  <li>Fully Responsive</li>
   <li>Powered by jQuery</li>
-  <li>Accepts HTML contents</li> 
-  <li>Lightweight</li>
+  <li>Accepts HTML contents</li>
+  <li>Lightweight (17kb)</li>
 </ul>
 <h2>Version History</h2>
-<h3>Current Version: <b>v0.2.0</b></h3>
+<h3>Current Version: <b>v0.3.0</b></h3>
 <ul>
+<li>
+    <p><b>Version 0.3.0</b><br />Fully flushed out maxSlides & minSlides within infinite loop for both slides and pager. SetTimeout implimented to handle screen resizing events and animate to the correct height following the resisizing of the divs.</p>
+  </li>
 <li>
     <p><b>Version 0.2.0</b><br />Completed plugin isolation. Can now run two sliders on the same page without interferance. Also fixed responsive wrapper height resizing to perform as expected.</p>
   </li>
@@ -62,10 +65,4 @@ Number of visible items at mobile width
 ```
 default: 1
 options: integer
-```
-**themeColor**
-Default color of pager dots and next/previous arrows
-```
-default: '#d91a05'
-options: hex
 ```
