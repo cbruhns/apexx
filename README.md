@@ -7,6 +7,7 @@
   <li>Accepts HTML contents</li>
   <li>Lightweight (17kb)</li>
 </ul>
+<p>Written by: Cameron Bruhns</p>
 <h2>Version History</h2>
 <h3>Current Version: <b>v0.3.0</b></h3>
 <ul>
