@@ -64,14 +64,7 @@
               var currentItems = [];
               var activeData = [];
               for (var i=0;i<o.maxSlides;i++) {
-                if((i + currentIndex) < itemAmt){
-                  currentItems.push( items.eq(currentIndex + i) );
-                  activeData.push( items.eq(currentIndex + i).attr('data-index') );
-                } else {
-                  currentItems.push( items.eq(e) );
-                  activeData.push( items.eq(e).attr('data-index') );
-                  e++
-                }
+                (i + currentIndex) < itemAmt ? (currentItems.push(items.eq(currentIndex + i)),activeData.push(items.eq(currentIndex + i).attr('data-index'))) : (currentItems.push(items.eq(e)),activeData.push(items.eq(e).attr('data-index')),e++);
               }
 
               // Pager
@@ -127,14 +120,7 @@
               var currentItems = [];
               var activeData = [];
               for (var i=0;i<o.minSlides;i++) {
-                if((i + currentIndex) < itemAmt){
-                  currentItems.push( items.eq(currentIndex + i) );
-                  activeData.push( items.eq(currentIndex + i).attr('data-index') );
-                } else {
-                  currentItems.push( items.eq(e) );
-                  activeData.push( items.eq(e).attr('data-index') );
-                  e++
-                }
+                (i + currentIndex) < itemAmt ? (currentItems.push(items.eq(currentIndex + i)),activeData.push(items.eq(currentIndex + i).attr('data-index'))) : (currentItems.push(items.eq(e)),activeData.push(items.eq(e).attr('data-index')),e++);
               }
 
               // Pager
