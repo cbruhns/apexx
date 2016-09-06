@@ -14,8 +14,7 @@
 
         // Pre-Wrap
         $(this).wrap("<div class='wrapper'></div>");
-        $(this).parents(".wrapper").append("<div class='clearfix'></div>");
-        $(this).parents(".wrapper").append("<div class='controls'></div>");
+        $(this).parents(".wrapper").append("<div class='clearfix'></div><div class='controls'></div>");
         $(this).siblings(".controls").append("<div class='next'></div><div class='prev'></div><div class='pager'></div>");
         $(this).siblings(".controls").children(".next, .prev").append("<div class='top'><span></span></div><div class='bottom'><span></span></div>");
 
