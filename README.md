@@ -9,16 +9,16 @@
 </ul>
 <p>Written by: Cameron Bruhns</p>
 <h2>Version History</h2>
-<h3>Current Version: <b>v0.3.0</b></h3>
+<h3>Current Version: <b>v0.3</b></h3>
 <ul>
 <li>
-    <p><b>Version 0.3.0</b><br />Fully flushed out maxSlides & minSlides within infinite loop for both slides and pager. SetTimeout implimented to handle screen resizing events and animate to the correct height following the resisizing of the divs.</p>
+    <p><b>Version 0.3</b><br />Fully flushed out maxSlides & minSlides within infinite loop for both slides and pager. SetTimeout implimented to handle screen resizing events and animate to the correct height following the resisizing of the divs.</p>
   </li>
 <li>
-    <p><b>Version 0.2.0</b><br />Completed plugin isolation. Can now run two sliders on the same page without interferance. Also fixed responsive wrapper height resizing to perform as expected.</p>
+    <p><b>Version 0.2</b><br />Completed plugin isolation. Can now run two sliders on the same page without interferance. Also fixed responsive wrapper height resizing to perform as expected.</p>
   </li>
   <li>
-    <p><b>Version 0.1.2</b><br />Inital repo and folder structure established, along with README and initial content.</p>
+    <p><b>Version 0.1</b><br />Inital repo and folder structure established, along with README and initial content.</p>
   </li>
 </ul>
 <br>
