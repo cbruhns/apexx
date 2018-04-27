@@ -24,6 +24,7 @@
 <br>
 <h1>Installation</h1>
 <h2>Step 1: Link Required Dependancies</h2>
+
 ```html
 <!-- Install Stylesheet -->
 <link rel="stylesheet" href="css/style.css" type="text/css">
@@ -32,7 +33,9 @@
 <!-- Install Apexx Script -->
 <script src="js/jquery.apexx.js" type="text/javascript"></script>
 ```
+
 <h2>Step 2: The HTML</h2>
+
 ```html
 <ul class="cycle">
   <li>
@@ -46,12 +49,15 @@
   </li>
 </ul>
 ```
+
 <h2>Step 3: Initialize JS</h2>
-```javascript
+
+```
 $(document).ready(function(){
   $(".cycle").apexx();
 });
 ```
+
 <br>
 <h1>Options</h1>
 
